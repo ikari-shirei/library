@@ -1,0 +1,236 @@
+:root {
+  --pink1: #FF0A54;
+  --pink2: #FF477E;
+  --pink3: #FF85A1;
+  --pink4: #FAE0E4;
+  --black1: #000000;
+  --linear1: linear-gradient(90deg, rgba(255,10,84,1) 0%, rgba(255,71,126,1) 100%);
+  --font-family: 'Roboto', sans-serif;
+  --font-weight-700: 700;
+  --font-weight-400: 400;
+  --font-size1: 44px;
+  --font-size2: 32px;
+  --font-size3: 24px;
+  --font-size4: 16px;
+  --font-size5: 14px;
+  --shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  background-color: var(--pink4);
+  font-weight: var(--font-weight-400);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--pink1);
+  height: 60px;
+  padding: 1rem;
+}
+
+.navbar h1 {
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size1);
+  color: var(--pink4);
+  padding: 0;
+  margin: 0;
+  
+}
+
+/* .navbar button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--pink4);
+  color: var(--black1);
+  border: 0;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.8rem;
+  cursor: pointer;
+} */
+
+/* main */
+
+/* main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+} */
+
+/* form */
+
+.book-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+/* 
+.book-form form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 70%;
+} */
+
+.book-form form h1 {
+  padding: 1rem;
+  margin: 0;
+  color: var(--black1);
+}
+
+.form-element {
+  min-width: 332px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.form-element label{
+  padding: 0 0 0.5rem 0;
+}
+
+#pages::-webkit-outer-spin-button,
+#pages::-webkit-inner-spin-button  {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#pages[type=number] {
+  -moz-appearance: textfield;
+}
+
+#isread  {
+  height: 34px;
+}
+
+#submit-button {
+  align-self: flex-end;
+  cursor: pointer;
+  font-weight: var(--font-weight-400);
+  border: 0;
+  width: 100px;
+  height: 34px;
+  border: 0;
+  border-radius: 10px;
+  background-color:  var(--pink1);
+  color:  var(--pink4);
+}
+
+/*Library Header */
+
+.library-header {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.library-header h1 {
+
+  padding: 1rem;
+  margin: 0;
+}
+
+/* library */
+
+.library {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.container {
+  margin: 1.5rem 1rem 1rem 1rem;
+  background: var(--linear1);
+  color: var(--pink4);
+  padding: 1rem;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  filter: var(--shadow);
+  overflow: hidden;
+}
+
+.container-header {
+  font-size: var(--font-size2);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.container-header h2 {
+  max-width: 250px;
+  font-weight: var(--font-weight-700);
+  padding: 0;
+  margin: 0;
+}
+
+.container-header button{
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.container-header button span {
+  font-size: var(--font-size2);
+  font-weight: var(--font-weight-700);
+  cursor: pointer;
+}
+
+.container-body {
+  font-weight: var(--font-weight-400);
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.container-body h3 {
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size4);
+  padding: 0.2rem 0;
+  margin: 0;
+}
+
+.container-body h4 {
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size5);
+  padding: 0.2rem 0;
+  margin: 0;
+}
+
+.container-footer {
+  font-weight: var(--font-weight-400);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 1rem;
+}
+
+.container-footer h4 {
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size5);
+  padding: 0.2rem 5.1rem 0.2rem 0rem;
+  margin: 0;
+  
+}
+
+.container-footer button {
+  cursor: pointer;
+  font-weight: var(--font-weight-400);
+  border: 0;
+  width: 100px;
+  height: 35px;
+  border-radius: 10px;
+  background-color: var(--pink4);
+  color: var(--pink1);
+}

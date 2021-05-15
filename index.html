@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <h1>Library</h1>
+        <!-- <button type="button"><span class="material-icons">add</span></button> -->
+      </div>
+    </header>
+    <main>
+      <div class="book-form">
+        <form>
+          <h1 class="form-element">New Book</h1>
+          <div class="form-element">
+            <label for="bname">Book Name</label>
+            <input type="text" id="bname" name="bname" />
+          </div>
+          <div class="form-element">
+            <label for="aname">Author Name</label>
+            <input type="text" id="aname" name="aname" />
+          </div>
+          <div class="form-element">
+            <label for="pages">Number Of Pages</label>
+            <input
+              type="number"
+              id="pages"
+              name="pages"
+              oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')"
+            />
+          </div>
+          <div class="form-element">
+            <label for="isread">Have you read this book?</label>
+            <select id="isread" name="isread">
+              <option value="australia">Yes</option>
+              <option value="canada">No</option>
+            </select>
+          </div>
+          <div class="form-element">
+            <input type="submit" value="Submit" id="submit-button" />
+          </div>
+        </form>
+      </div>
+      <div class="library-header"><h1>Books</h1></div>
+      <div class="library">
+        <div class="container">
+          <div class="container-header">
+            <h2>Moby Dick</h2>
+            <button><span class="material-icons">close</span></button>
+          </div>
+          <div class="container-body">
+            <h3>by Herman Melville</h3>
+            <h4>654 pages</h4>
+          </div>
+          <div class="container-footer">
+            <h4>You read this book.</h4>
+            <button type="button">Unread</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
