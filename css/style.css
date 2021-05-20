@@ -124,6 +124,10 @@ body {
   color:  var(--pink4);
 }
 
+#submit-button:hover {
+  opacity: 0.8;
+}
+
 /*Library Header */
 
 .library-header {
@@ -180,6 +184,10 @@ body {
   cursor: pointer;
 }
 
+.container-header button:hover {
+  opacity: 0.7;
+}
+
 .container-header button span {
   font-size: var(--font-size2);
   font-weight: var(--font-weight-700);
@@ -233,4 +241,8 @@ body {
   border-radius: 10px;
   background-color: var(--pink4);
   color: var(--pink1);
+}
+
+.container-footer button:hover {
+  opacity: 0.9;
 }

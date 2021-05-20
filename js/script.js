@@ -1,5 +1,10 @@
 let library = document.querySelector('.library');
-
+let submitButton = document.querySelector('#submit-button');
+let form = document.querySelector('.form');
+let bookName = document.querySelector('#bname');
+let authorName = document.querySelector('#aname');
+let pages = document.querySelector('#pages');
+let readStatus = document.querySelector('#isread');
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -12,19 +17,7 @@ function Book(title, author, pages, read) {
   };
 }
 
-const mobyDick = new Book('Moby Dick', 'Herman Melville', '654', 'read');
-myLibrary.push(mobyDick);
-
-function displayBook(title, author, pages, read) {
-  myLibrary.forEach((x) => {});
-}
-
-function addBookToLibrary() {
-  // do stuff here
-}
-console.log(myLibrary);
-
-function createBook() {
+function createBook(title, author, pages, read) {
   //start
   //container
   let containerDiv = document.createElement('div');
@@ -36,7 +29,7 @@ function createBook() {
   containerDiv.appendChild(containerHeaderDiv);
   //name of book
   containerHeaderH2 = document.createElement('h2');
-  containerHeaderH2.textContent = '1984';
+  containerHeaderH2.textContent = `${title}`;
   containerHeaderDiv.appendChild(containerHeaderH2);
   //close button
   containerHeaderButton = document.createElement('button');
@@ -48,31 +41,74 @@ function createBook() {
   containerDiv.appendChild(containerBodyDiv);
   //name of author
   containerBodyH3 = document.createElement('h3');
-  containerBodyH3.textContent = 'by George Orwell';
+  containerBodyH3.textContent = `by ${author}`;
   containerBodyDiv.appendChild(containerBodyH3);
   //number of pages
   containerBodyH4 = document.createElement('h4');
-  containerBodyH4.textContent = '328 pages';
+  containerBodyH4.textContent = `${pages} pages`;
   containerBodyDiv.appendChild(containerBodyH4);
   //container footer
   containerFooterDiv = document.createElement('div');
   containerFooterDiv.classList.add('container-footer');
   containerDiv.appendChild(containerFooterDiv);
   //read message
-  containerFooterH4 = document.createElement('h4');
-  containerFooterH4.textContent = 'You read this book.';
-  containerFooterDiv.appendChild(containerFooterH4);
+  if (read === 'read') {
+    containerFooterH4 = document.createElement('h4');
+    containerFooterH4.textContent = `You read this book.`;
+    containerFooterDiv.appendChild(containerFooterH4);
+  }
   //read - unread button
   containerFooterButton = document.createElement('button');
   containerFooterButton.setAttribute('type', 'button');
   containerFooterButton.textContent = 'Unread';
   containerFooterDiv.appendChild(containerFooterButton);
+  if (read !== 'read') {
+    containerFooterButton.textContent = 'Read';
+    containerDiv.style.color = 'var(--pink1)';
+    containerDiv.style.background = 'var(--pink4)';
+    containerFooterButton.style.color = 'var(--pink4)';
+    containerFooterButton.style.backgroundColor = 'var(--pink1)';
+  }
+
   // append containter div
   library.appendChild(containerDiv);
 }
 
-createBook();
-createBook();
-createBook();
-createBook();
-createBook();
+function addBookToLibrary() {
+  submitButton.addEventListener('click', (x) => {
+    let bookNameValue = bookName.value;
+    let authorNameValue = authorName.value;
+    let pagesValue = pages.value;
+    let isItRead = undefined;
+    if (!bookNameValue || !authorNameValue || !pagesValue) {
+      return window.alert('You have to fill all of the fields.');
+    } else {
+      if (readStatus.value === 'yes') {
+        isItRead = 'read';
+      } else {
+        isItRead = 'not read';
+      }
+
+      myLibrary.push(
+        new Book(
+          `${bookNameValue}`,
+          `${authorNameValue}`,
+          `${pagesValue}`,
+          `${isItRead}`
+        )
+      );
+
+      form.reset();
+    }
+    displayBook();
+    myLibrary = [];
+  });
+}
+
+addBookToLibrary();
+
+function displayBook() {
+  myLibrary.forEach((x) => {
+    createBook(`${x.title}`, `${x.author}`, `${x.pages}`, `${x.read}`);
+  });
+}

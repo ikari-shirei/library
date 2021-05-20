@@ -25,15 +25,15 @@
     </header>
     <main>
       <div class="book-form">
-        <form>
+        <form class="form">
           <h1 class="form-element">New Book</h1>
           <div class="form-element">
             <label for="bname">Book Name</label>
-            <input type="text" id="bname" name="bname" />
+            <input type="text" id="bname" name="bname" required />
           </div>
           <div class="form-element">
             <label for="aname">Author Name</label>
-            <input type="text" id="aname" name="aname" />
+            <input type="text" id="aname" name="aname" required />
           </div>
           <div class="form-element">
             <label for="pages">Number Of Pages</label>
@@ -42,23 +42,26 @@
               id="pages"
               name="pages"
               oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')"
+              required
             />
           </div>
           <div class="form-element">
             <label for="isread">Have you read this book?</label>
             <select id="isread" name="isread">
-              <option value="australia">Yes</option>
-              <option value="canada">No</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
             </select>
           </div>
           <div class="form-element">
-            <input type="submit" value="Submit" id="submit-button" />
+            <button type="button" value="Submit" id="submit-button">
+              Submit
+            </button>
           </div>
         </form>
       </div>
       <div class="library-header"><h1>Books</h1></div>
       <div class="library">
-        <div class="container">
+        <!-- <div class="container">
           <div class="container-header">
             <h2>Moby Dick</h2>
             <button><span class="material-icons">close</span></button>
@@ -71,7 +74,7 @@
             <h4>You read this book.</h4>
             <button type="button">Unread</button>
           </div>
-        </div>
+        </div> -->
       </div>
     </main>
     <script src="./js/script.js"></script>
