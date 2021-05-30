@@ -6,6 +6,7 @@ let authorName = document.querySelector('#aname');
 let pages = document.querySelector('#pages');
 let readStatus = document.querySelector('#isread');
 let myLibrary = [];
+let myLibraryDOM = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -22,7 +23,6 @@ function createBook(title, author, pages, read) {
   //container
   let containerDiv = document.createElement('div');
   containerDiv.classList.add('container');
-
   //container header
   let containerHeaderDiv = document.createElement('div');
   containerHeaderDiv.classList.add('container-header');
@@ -34,6 +34,8 @@ function createBook(title, author, pages, read) {
   //close button
   containerHeaderButton = document.createElement('button');
   containerHeaderButton.innerHTML = '<span class="material-icons">close</span>';
+  containerHeaderButton.classList.add('close-button');
+  containerHeaderButton.addEventListener('click', deleteBook);
   containerHeaderDiv.appendChild(containerHeaderButton);
   //container body
   containerBodyDiv = document.createElement('div');
@@ -80,6 +82,7 @@ function addBookToLibrary() {
     let authorNameValue = authorName.value;
     let pagesValue = pages.value;
     let isItRead = undefined;
+    let dataAttribute = bookNameValue;
     if (!bookNameValue || !authorNameValue || !pagesValue) {
       return window.alert('You have to fill all of the fields.');
     } else {
@@ -94,7 +97,8 @@ function addBookToLibrary() {
           `${bookNameValue}`,
           `${authorNameValue}`,
           `${pagesValue}`,
-          `${isItRead}`
+          `${isItRead}`,
+          `${dataAttribute}`
         )
       );
 
@@ -110,5 +114,18 @@ addBookToLibrary();
 function displayBook() {
   myLibrary.forEach((x) => {
     createBook(`${x.title}`, `${x.author}`, `${x.pages}`, `${x.read}`);
+  });
+}
+
+function deleteBook() {
+  let closeButton = document.querySelector('.material-icons');
+  document.querySelector('body').addEventListener('click', function (e) {
+    if (
+      e.target &&
+      e.target.classList.contains('material-icons') &&
+      e.target.dataAttribute === e.target.bookNameValue
+    ) {
+      closeButton.parentNode.parentNode.parentNode.remove();
+    }
   });
 }
