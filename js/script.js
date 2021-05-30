@@ -105,7 +105,7 @@ function addBookToLibrary() {
       form.reset();
     }
     displayBook();
-    myLibrary = [];
+    myLibrary = []; //When I don't clear array, it pushes all of the array elements every time.
   });
 }
 
