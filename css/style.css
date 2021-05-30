@@ -43,26 +43,15 @@ body {
   
 }
 
-/* .navbar button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--pink4);
-  color: var(--black1);
-  border: 0;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.8rem;
+#github-icon {
+  width: 35px;
+  height: 35px;
   cursor: pointer;
-} */
+}
 
-/* main */
-
-/* main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-} */
+#github-icon:hover {
+  opacity: 0.8;
+}
 
 /* form */
 
@@ -72,13 +61,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-/* 
-.book-form form {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 70%;
-} */
 
 .book-form form h1 {
   padding: 1rem;

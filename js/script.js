@@ -6,7 +6,6 @@ let authorName = document.querySelector('#aname');
 let pages = document.querySelector('#pages');
 let readStatus = document.querySelector('#isread');
 let myLibrary = [];
-let myLibraryDOM = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -18,8 +17,8 @@ function Book(title, author, pages, read) {
   };
 }
 
+//DOM book container builder
 function createBook(title, author, pages, read) {
-  //start
   //container
   let containerDiv = document.createElement('div');
   containerDiv.classList.add('container');
@@ -53,19 +52,13 @@ function createBook(title, author, pages, read) {
   containerFooterDiv = document.createElement('div');
   containerFooterDiv.classList.add('container-footer');
   containerDiv.appendChild(containerFooterDiv);
-  //read message
-  /*   if (read === 'read') {
-    containerFooterH4 = document.createElement('h4');
-    containerFooterH4.textContent = `You read this book.`;
-    containerFooterDiv.appendChild(containerFooterH4);
-  }
- */ //read - unread button
+  //read status change button
   containerFooterButton = document.createElement('button');
   containerFooterButton.setAttribute('type', 'button');
   containerFooterButton.textContent = 'Unread';
   containerFooterDiv.appendChild(containerFooterButton);
   containerFooterButton.addEventListener('click', changeReadStatus);
-
+  // apperance of books which is not read
   if (read !== 'read') {
     containerFooterButton.textContent = 'Read';
     containerDiv.style.color = 'var(--pink1)';
@@ -73,55 +66,56 @@ function createBook(title, author, pages, read) {
     containerFooterButton.style.color = 'var(--pink4)';
     containerFooterButton.style.backgroundColor = 'var(--pink1)';
   }
-
   // append containter div
   library.appendChild(containerDiv);
 }
 
 function addBookToLibrary() {
+  //take inputs from form and create book
   submitButton.addEventListener('click', (x) => {
     let bookNameValue = bookName.value;
     let authorNameValue = authorName.value;
     let pagesValue = pages.value;
     let isItRead = undefined;
-    let dateNow = Date.now();
-    let dataAttribute = dateNow;
+    //ask user to fill all of the fields
     if (!bookNameValue || !authorNameValue || !pagesValue) {
       return window.alert('You have to fill all of the fields.');
     } else {
+      // take read - unread input
       if (readStatus.value === 'yes') {
         isItRead = 'read';
       } else {
         isItRead = 'not read';
       }
-
+      //create new book object and push library array
       myLibrary.push(
         new Book(
           `${bookNameValue}`,
           `${authorNameValue}`,
           `${pagesValue}`,
-          `${isItRead}`,
-          `${dataAttribute}`
+          `${isItRead}`
         )
       );
-
+      //reset form fields
       form.reset();
     }
+    //append new book to page
     displayBook();
+    //clear book from library array
     myLibrary = [];
   });
 }
 
 addBookToLibrary();
 
+//append new book to page
 function displayBook() {
   myLibrary.forEach((x) => {
     createBook(`${x.title}`, `${x.author}`, `${x.pages}`, `${x.read}`);
   });
 }
-
+//delete DOM element (book container) from page
 function deleteBook() {
-  let closeButton = document.querySelector('.material-icons');
   document.querySelector('body').addEventListener('click', function (e) {
     if (e.target && e.target.classList.contains('material-icons')) {
       e.target.parentNode.parentNode.parentNode.remove();
@@ -129,21 +123,19 @@ function deleteBook() {
   });
 }
 
+//change read status of book container
 function changeReadStatus(e) {
   if (e.target.textContent === 'Read') {
-    containerFooterButton.textContent = 'Unread';
+    e.target.textContent = 'Unread';
     e.target.style.color = 'var(--pink1)';
     e.target.style.background = 'var(--pink4)';
-
     e.target.parentNode.parentNode.style.color = 'var(--pink4)';
     e.target.parentNode.parentNode.style.background = 'var(--pink1)';
   } else {
-    containerFooterButton.textContent = 'Read';
-    e.target.style.color = 'var(--pink1)';
-    e.target.style.background = 'var(--pink4)';
+    e.target.textContent = 'Read';
+    e.target.style.color = 'var(--pink4)';
+    e.target.style.background = 'var(--pink1)';
     e.target.parentNode.parentNode.style.color = 'var(--pink1)';
     e.target.parentNode.parentNode.style.background = 'var(--pink4)';
   }
 }
-
-/* && e.target.dataAttribute === e.target.dataAttribute */
