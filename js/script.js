@@ -54,16 +54,18 @@ function createBook(title, author, pages, read) {
   containerFooterDiv.classList.add('container-footer');
   containerDiv.appendChild(containerFooterDiv);
   //read message
-  if (read === 'read') {
+  /*   if (read === 'read') {
     containerFooterH4 = document.createElement('h4');
     containerFooterH4.textContent = `You read this book.`;
     containerFooterDiv.appendChild(containerFooterH4);
   }
-  //read - unread button
+ */ //read - unread button
   containerFooterButton = document.createElement('button');
   containerFooterButton.setAttribute('type', 'button');
   containerFooterButton.textContent = 'Unread';
   containerFooterDiv.appendChild(containerFooterButton);
+  containerFooterButton.addEventListener('click', changeReadStatus);
+
   if (read !== 'read') {
     containerFooterButton.textContent = 'Read';
     containerDiv.style.color = 'var(--pink1)';
@@ -82,7 +84,8 @@ function addBookToLibrary() {
     let authorNameValue = authorName.value;
     let pagesValue = pages.value;
     let isItRead = undefined;
-    let dataAttribute = bookNameValue;
+    let dateNow = Date.now();
+    let dataAttribute = dateNow;
     if (!bookNameValue || !authorNameValue || !pagesValue) {
       return window.alert('You have to fill all of the fields.');
     } else {
@@ -105,7 +108,7 @@ function addBookToLibrary() {
       form.reset();
     }
     displayBook();
-    myLibrary = []; //When I don't clear array, it pushes all of the array elements every time.
+    myLibrary = [];
   });
 }
 
@@ -120,12 +123,27 @@ function displayBook() {
 function deleteBook() {
   let closeButton = document.querySelector('.material-icons');
   document.querySelector('body').addEventListener('click', function (e) {
-    if (
-      e.target &&
-      e.target.classList.contains('material-icons') &&
-      e.target.dataAttribute === e.target.bookNameValue
-    ) {
-      closeButton.parentNode.parentNode.parentNode.remove();
+    if (e.target && e.target.classList.contains('material-icons')) {
+      e.target.parentNode.parentNode.parentNode.remove();
     }
   });
 }
+
+function changeReadStatus(e) {
+  if (e.target.textContent === 'Read') {
+    containerFooterButton.textContent = 'Unread';
+    e.target.style.color = 'var(--pink1)';
+    e.target.style.background = 'var(--pink4)';
+
+    e.target.parentNode.parentNode.style.color = 'var(--pink4)';
+    e.target.parentNode.parentNode.style.background = 'var(--pink1)';
+  } else {
+    containerFooterButton.textContent = 'Read';
+    e.target.style.color = 'var(--pink1)';
+    e.target.style.background = 'var(--pink4)';
+    e.target.parentNode.parentNode.style.color = 'var(--pink1)';
+    e.target.parentNode.parentNode.style.background = 'var(--pink4)';
+  }
+}
+
+/* && e.target.dataAttribute === e.target.dataAttribute */
