@@ -7,14 +7,16 @@ let pages = document.querySelector('#pages');
 let readStatus = document.querySelector('#isread');
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.info = function () {
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  info() {
     return `${title} by ${author}, ${pages} pages, is ${read}.`;
-  };
+  }
 }
 
 //DOM book container builder
@@ -99,8 +101,10 @@ function addBookToLibrary() {
       //reset form fields
       form.reset();
     }
+
     //append new book to page
     displayBook();
+
     //clear book from library array
     myLibrary = [];
   });
