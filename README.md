@@ -7,7 +7,7 @@
 * Creating Library app while practicing JS DOM, constructors and classes.
 
 ## Features
-* You can add books to library with title, author, pages and read status information of that book.
+* You can add books to the library with title, author, number of pages and read status.
 * You can remove books from library.
 * You can update read status of books.
 
